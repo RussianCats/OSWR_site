@@ -56,7 +56,7 @@ class Products(models.Model):
         decimal_places=2,
         verbose_name="Цена"
     )
-    discout = models.DecimalField(
+    discount = models.DecimalField(
         default=0.00,
         max_digits=4,
         decimal_places=2,
@@ -80,4 +80,11 @@ class Products(models.Model):
     def __str__(self):
         return f'{self.name} Количество - {self.quantity}' 
 
-
+    def display_id(self):
+        return f"{self.id:05}"
+    
+    def sell_price(self):
+        if self.discount:
+            return round(self.price - (self.price * self.discount) / 100, 2)
+        
+        return self.price
