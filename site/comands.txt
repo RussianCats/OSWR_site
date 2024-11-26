@@ -1,0 +1,5 @@
+python manage.py makemigrations 
+python manage.py migrate  
+python manage.py loaddata fixtures/goods/categories.json
+python manage.py dumpdata goods.Products > fixtures/goods/products.js
+python manage.py createsuperuser   
