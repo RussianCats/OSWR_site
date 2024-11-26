@@ -1,3 +1,4 @@
 Pillow
 django-debug-toolbar
 numpy
+psycopg
