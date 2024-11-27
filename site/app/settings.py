@@ -91,7 +91,7 @@ DATABASES = {
         'USER': 'oswr_site',
         'PASSWORD': '5892',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
