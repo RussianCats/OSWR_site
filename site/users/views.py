@@ -20,7 +20,8 @@ def login(request):
                 auth.login(request, user)
                 messages.success(request, f"Вы вошли в аккаунт, {username}!")
 
-                if request.POST.get('next', None):
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
                     return HttpResponseRedirect(request.POST.get('next'))
 
                 # после входа отправляем
@@ -54,7 +55,7 @@ def registration(request):
 @login_required
 def profile(request):
 
-        # логиука на вход пользователя
+    # логиука на вход пользователя
     if request.method == 'POST':
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
